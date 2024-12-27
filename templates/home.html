@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/iconoir-icons/iconoir@main/css/iconoir.css">
+    <link rel="stylesheet" href="../static/home_page.css">
+    <link rel="stylesheet" href="../static/modal_comunity.css">
+    <title>Document</title>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"
+      integrity="sha512-q/dWJ3kcmjBLU4Qc47E4A9kTB4m3wuTY7vkFJDTZKjTs8jhyGQnaUrxa0Ytd0ssMZhbNua9hE+E7Qv1j+DyZwA=="
+      crossorigin="anonymous"
+    ></script>
+</head>
+<body>
+    <div class="container">
+
+
+        <div class="state_bar">
+            <div class="logo">
+                <img src="../static/images/logo/temporary_logo_2.png" alt="">
+            </div>
+            <ul class="quick_navigation_btn">
+                <li class="qnb_item" key="1" title="Message"><button class="qnb_item_btn selected_button"><i class="iconoir-message"></i></button></li>
+                <li class="qnb_item" key="2" title="Community"><button class="qnb_item_btn btn_community"><i class="iconoir-community"></i></button></li>
+                <li class="qnb_item" key="3" title="Cloud"><button class="qnb_item_btn"><i class="iconoir-cloud"></i></button></li>
+                <li class="qnb_item" key="5" title="Settings"><button class="qnb_item_btn"><i class="iconoir-settings"></i></button></li>
+                <li class="qnb_item" key="6" title="Sign out"><a class="qnb_item_btn" href="/sign_out"><i class="iconoir-log-out"></i></a></li>
+            </ul>
+            <li class="qnb_item" key="4" title="Your profile">
+                <button class="qnb_item_btn profile_btn">
+                    
+                </button>
+            </li>
+        </div>
+
+
+        <div class="container_main_page">
+
+
+            <div class="box_11_container" >
+                <div class="box_11_header">
+                    <h1 class="box_11_heading">Contacts</h1>
+                    <ul style="list-style-type: none;" class="row">
+                        <li title="Search" class="box_11_header_item"><button class="style_button_noborder main_margin_lr button_header_box_11"><i class="iconoir-search style_icon"></i></button></li>
+                        <li title="QR code" class="box_11_header_item"><button class="style_button_noborder button_header_box_11"><i class="iconoir-qr-code style_icon"></i></button></li>
+                    </ul>
+                </div>
+
+              <div class="contacts_active">
+                    <div class="ca_header">
+                        <p class="ca_heading">Online Now</p>
+                        <button class="ca_see_all">See All</button>
+                    </div>
+
+                    <div class="ca_list_active scroller">
+                        
+                        
+                        
+                    </div>
+                </div>
+
+
+                <!--<p class="ca_heading" style="height: 30px;"><i class="iconoir-message-text"></i> Contacts</p>-->
+                <div class="all_message">
+                    <div class="buttons">
+
+                    </div>
+                </div>
+
+
+
+            </div>
+
+
+            <div class="box_22">
+                {% if user_name_choose %}
+                <div class="title_contact">
+                    <img class="title_contact_avartar contact_avartar" src="../static/server_image/{{avatar_choose}}" alt="https://static.vecteezy.com/system/resources/previews/009/292/244/original/default-avatar-icon-of-social-media-user-vector.jpg">
+                    <div class="title_contact_general">
+                        <div class="name">
+                            <p style="font-family: poppins_bold; display: inline-block;">{{user_name_choose}}</p>
+                            <!-- <img src="../static/images/icons/tick.png" alt=""> -->
+                        </div>
+                        <p class="room_info ca_heading">
+                            {%if is_a_group%}
+                                {{membersC}} Members
+                            {%else%}
+                                Just Display For Room
+                            {% endif %}
+                        </p>
+                    </div>
+                    <ul class="call_audio_more">
+                        <button class="call style_button_noborder" title="Video Call"><i class="iconoir-video-camera"></i></button>
+                        <button class="expand style_button_noborder" title="More"><i class="iconoir-sidebar-expand"></i></button>
+                    </ul>
+                </div>
+
+                <div class="block_chat">
+                    
+                    <div class="message-box">
+                        <div class='contacts'>
+                          
+                        </div>
+                        <div class="block_chat_content" id="chatContent">
+                            <div class="messages" id="messages">
+
+                                <!-- Bên phía server có trả về danh sách các tin nhắn trước đây được lưu trong csdl, đoạn code này giúp render chúng ra, nó tương tự như hàm createMessage bên home.js  -->
+                                {% for mess in Messages %}
+                                    <div class="main_block_chat {% if cruser == mess['sender'] %}flex_right{% else %}flex_left{% endif %}">
+                                        <div class="sender_image">
+                                            <img src="../static/server_image/{{mess['avatar']}}" alt="" class="{% if cruser == mess['sender'] %}block_none{% else %}block_block{% endif %}">
+                                        </div>
+                                        <div class="text {% if cruser == mess['sender'] %}text_right{% endif %}">
+                                            <div class="text_info">
+                                                <p class="sender {% if cruser == mess['sender'] %}block_none{% else %}block_block{% endif %}">{{mess['sender']}}</p>
+                                            </div>
+                                                {%if mess['is_image']%}
+                                                    <div class="text_content">
+                                                        <img src="../static/cloud/{{mess['content']}}" alt="image error">
+                                                    </div>
+                                                {%else%}
+                                                    <div class="text_content {% if cruser == mess['sender'] %}is_sender{% else %}is_received{% endif %}">
+                                                        <p>{{mess['content']}}</p>
+                                                    </div>
+                                                {%endif%}
+                                            <div class="time_content ">
+                                                <p>{{mess["date"]}}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+
+                                
+                                
+                            </div>
+                        </div>
+                        
+                    </div>
+
+                    
+
+                </div>
+
+                <div class="type_message">            
+                        <div class="inputs">
+                            <input type="text" placeholder="Type message" name="message" id="message_input" rows = "3">
+                        </div>
+                        <ul style="list-style-type: none;" class="just_row send_message">
+                            <li title="image_message" class="type_message_item">
+                                <input type="file" id="imageFileInput" style="display: none;">
+                                <button class="style_button_noborder main_margin_lr button_image_message">
+                                    <i class="iconoir-media-image style_icon"></i>
+                                </button>
+                            </li>
+                            <li title="Attachment" class="type_message_item">
+                                <input type="file" id="fileInput" style="display: none;">
+                                <button class="style_button_noborder main_margin_lr button_attachment">
+                                    <i class="iconoir-attachment style_icon"></i>
+                                </button>
+                            </li>
+                              
+                            <li title="Send" class="type_message_item"><button class="style_button_noborder " style="background-color: #3f71ee;" type="button" name="send" id="send-btn" onClick="sendMessage()"><i class="iconoir-send style_icon" style="color: #ffffff;"></i></button></li>
+                        </ul>
+                </div>
+                {% else %}
+                <div class="w3-display-container mySlides">
+                    <h2 style="text-align:center; line-height:100vh;">Click on the contacts to see what's happening here !</h2>
+                </div>
+                {% endif %}
+            </div>
+
+
+
+            <div class="box_33">
+                <div class="add_user_to_group">
+                    <h3>Add member</h3>
+                    <form action="/contacts/search/<search>" method="post">
+                        <input type="text" name = "search_query" id="search_query" class="search_contact" placeholder="Search">
+                    </form>
+                    <p class="ca_heading">Users</p>
+    
+    
+                    <div class="modal_community_contact_box" id="search_results">
+                        <!-- Đây là nơi append kết quả tìm kiếm -->
+                    </div>
+                </div>
+                <div class="members_of_room">
+                    <p class="ca_heading">Members</p>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+    <div class="modal_community" >
+        <div class="modal_community_container">
+            <button class="close_tab_modal" ><i class="iconoir-cancel"></i></button>
+            <ul class="navigator_modal_community">
+                <li class="navigator_modal_community_item"><button class="btn_nav btn_contact main_color">Contacts</button></li>
+                <li class="navigator_modal_community_item"><button class="btn_nav btn_room_chat">Room chat</button></li>
+            </ul>
+            <div class="modal_community_contact">
+                <form action="/contacts/search/<search>" method="post">
+                    <input type="text" name = "search_query" id="searchQuery" class="search_contact" placeholder="Search">
+                </form>
+                <p class="ca_heading">Users</p>
+                <div class="modal_community_contact_box" id="searchResults">
+                    <!-- Đây là nơi append kết quả tìm kiếm -->
+                </div>
+            </div>
+
+            <div class="modal_community_room_chat display_none">
+                <form action="/group_chat" method="post" enctype="multipart/form-data">
+                    <input type="text" name = "set_room_name" placeholder="Room name?">
+                    <input type="file" name="set_room_avatar" id="avatar">
+                    <button type="submit" name="ok">OK</button>
+                </form>
+            </div>
+
+        </div>
+
+
+    </div>
+
+    <script src="../static/modal_comunity.js"></script>
+    <script src="../static/home.js"></script>
+    <script type="text/javascript"></script>
+    <script src="../static/modal_detail.js" ></script>
+    <script>
+        {% if success_message %}
+            alert("{{ success_message }}");
+        {% endif %}
+    </script>
+
+</body>
+</html>

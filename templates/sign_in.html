@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello, This is Tan Tien!</title>
+    <link rel="stylesheet" href="../static/login.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="logo">TanTien.</div>
+        <div class="input_user_info">
+            <label for="user_name" class="label">Username</label>
+            <input type="text" name="user_name" class="lg_user_name" id="typeusername" placeholder="Enter your username"
+                required>
+            <label for="password" class="label">Password</label>
+            <input type="password" name="password" class="lg_password" id="typepassword"
+                placeholder="Enter your password" required>
+            <button type="submit" class="sign_in" onclick="SignIn()">Sign in</button>
+            <div id="result"></div>
+        </div>
+        <div class="more_option">
+            <a href="#" class="forgot_password">Forgot Password?</a>
+        </div>
+
+        <div class="others_method">
+            <h1>Or continue with</h1>
+            <div class="button_login">
+                <button class="google_account">
+                    <img src="https://i.pinimg.com/originals/74/65/f3/7465f30319191e2729668875e7a557f2.png" alt="">
+                </button>
+                <button class="apple_account">
+                    <img src="https://brademar.com/wp-content/uploads/2022/05/Apple-Logo-PNG.png" alt="">
+                </button>
+                <button class="facebook_account">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Facebook_Logo_%282019%29.png/1200px-Facebook_Logo_%282019%29.png"
+                        alt="">
+                </button>
+            </div>
+        </div>
+        <div class="sign_up">
+            <p>Don't have an account?</p>
+            <a href="sign_up" class="sign_up_btn">Sign up now</a>
+        </div>
+    </div>
+
+    <script src="../static/home.js"></script>
+</body>
+
+</html>

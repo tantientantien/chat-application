@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../static/login.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <div class="logo">Cher Ami</div>
+        <div class="input_user_info">
+            <form action="#" method="post" class="user_info" enctype="multipart/form-data">
+                <label for="email" class="label">Email</label>
+                <input type="text" name="email" class="lg_password" placeholder="Enter your email" required>
+
+
+                <label for="your_name" class="label">Your name</label>
+                <input type="text" name="your_name" class="lg_password" placeholder="Enter your name" required>
+
+
+                <label for="user_name" class="label">Username</label>
+                <input type="text" name="user_name" class="lg_user_name" placeholder="Enter your username" required>
+
+
+                <label for="password" class="label">Password</label>
+                <input type="password" name="password" class="lg_password" placeholder="Enter your password" required>
+
+                <label for="avatar" class="label">Avatar</label>
+                <input type="file" name="avatar" id="avatar">
+
+                <button type="submit" class="sign_in">Sign up</button>
+            </form>
+        </div>
+        {{message}}
+
+
+    </div>
+</body>
+
+</html>

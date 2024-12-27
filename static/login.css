@@ -1,0 +1,206 @@
+/* .sign_up_page,
+.login_page{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.user_info{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.lg_user_name,
+.lg_password{
+    width: 300px;
+    height: 40px;
+    font-size: 16px;
+    padding-left: 10px;
+    margin: 10px 0px;
+    border-radius: 7px;
+    border: 1px solid #000;
+}
+
+.sign_up,
+.sign_in{
+    width: 300px;
+    height: 40px;
+    font-size: 20px;
+    font-weight: bold;
+    padding-left: 10px;
+    margin-top: 10px;
+    border-radius: 7px;
+    background-color: #10a37f;
+    border: none;
+}
+
+.sign_up,
+.sign_in:hover{
+    opacity: 0.9;
+    cursor: pointer;
+} */
+
+*{
+    font-family: poppins_regular;
+}
+
+@font-face {
+    font-family: poppins_regular;
+    src: url(./fonts/poppins_regular.ttf);
+}
+
+@font-face {
+    font-family: poppins_bold;
+    src: url(./fonts/poppins_bold.ttf);
+}
+
+
+body{
+    background-color: #bdd5e7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 97vh;
+}
+
+.container{
+   border-radius: 16px;
+   background-color: #ffffff;
+   padding: 26px;
+   display: flex;
+   flex-direction: column;
+}
+
+.logo{
+    color: #3f71ee;
+    text-align: center;    
+    font-size: 45px;
+    font-family: 'Lobster';
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+
+.label{
+    font-size: 13px;
+    font-family: poppins_bold;
+}
+
+
+
+.input_user_info input{
+    display: block;
+    width: 300px;
+    padding: 0;
+    margin: 0;
+    border: 2px solid #f9f9f9;
+    background-color: #f7f7f7;
+    border-radius: 15px;
+    padding: 12px 0;
+    padding-left: 16px;
+    font-size: 13px;
+    margin-bottom: 30px;
+}
+
+.input_user_info button{
+    border-radius: 15px;
+    color: #ffff;
+    font-size: 16px;
+    width: 319.3px;
+    padding: 0;
+    border: 2px solid #f9f9f9;
+    padding: 12px 12px;
+    background-color: #3f71ee;
+    padding-left: 16px;
+}
+
+.input_user_info button:hover{
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+
+.more_option{
+    margin-top: 16px;
+}
+
+.forgot_password{
+    float: right;
+    background-color: transparent;
+    border: none;
+    text-decoration: underline;
+    font-size: 13px;
+    color: black;
+}
+
+.forgot_password:hover{
+    color: #3f71ee;
+}
+
+.others_method h1{
+    color: #686868;
+    font-size: 13px;
+    text-align: center;
+    margin-bottom: 16px;
+}
+
+
+.others_method{
+    margin: 25px 0px;
+}
+
+
+.button_login{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.button_login button{
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 25px;
+    background-color: #f7f7f7;
+    border-radius: 15px;
+}
+
+.button_login button:hover{
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+
+.button_login img{   
+    width: 30px;
+    height: 30px;
+    object-fit: cover;
+    border: none;
+}
+
+.sign_up{
+    display: block;
+    margin: 0 auto;
+}
+
+.sign_up p{
+    text-align: center;
+    font-size: 13px;
+    display: inline-block;
+}
+
+.sign_up a{
+    color: #3f71ee;
+    font-size: 13px;
+    text-decoration: none;
+    font-family: poppins_bold;
+}
+
+
+
+
